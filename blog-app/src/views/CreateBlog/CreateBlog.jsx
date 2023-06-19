@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer } from 'react';
-import { Box, Button, Checkbox } from '@mui/material';
+import { Alert, Box, Button, Checkbox, Container } from '@mui/material';
 import {
     initialState,
     postReducer,
@@ -34,7 +34,7 @@ const CreateBlog = () => {
             navigate('/explore');
         } catch (e) {
             dispatchCreateBlog({ type: SET_DATA_TYPE_LOADING, payload: false });
-            dispatchCreateBlog({ type: SET_DATA_TYPE_FAILURE, payload: 'Error' });
+            dispatchCreateBlog({ type: SET_DATA_TYPE_FAILURE, payload: 'Algo salio mal' });
             console.error('error', e);
         }
     };
@@ -181,6 +181,11 @@ const CreateBlog = () => {
                     <Button type="submit" variant="contained">Create</Button>
                 </Box>
             </ContainerStyled>
+            {createNewBlog.error && (
+                <Container maxWidth="sm" sx={{ mt: 2, mb: 2 }}>
+                    <Alert severity="error">Algo salio mal</Alert>
+                </Container>
+            )}
         </>
     );
 };

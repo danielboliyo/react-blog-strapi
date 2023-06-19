@@ -26,7 +26,7 @@ const Home = () => {
                 setOriginalBlogs(blogs.data?.data);
             } catch (error) {
                 blogsDispatch({ type: GET_DATA_TYPE_LOADING, payload: false });
-                blogsDispatch({ type: GET_DATA_TYPE_FAILURE, payload: 'Error' });
+                blogsDispatch({ type: GET_DATA_TYPE_FAILURE, payload: 'Algo salio mal' });
                 console.error(error);
             }
         };
@@ -67,7 +67,7 @@ const Home = () => {
                 searchText={searchText}
                 handleReset={handleReset}
             />
-            {blogs.error && <Typography variant="h2" sx={{ textAlign: 'center' }}>{blogs.error}</Typography>}
+            {blogs.error && <Typography variant="h4" sx={{ textAlign: 'center' }}>{blogs.error}</Typography>}
             <Container sx={{ mt: 2 }}>
                 {originalBlogs.length === 0 && blogs.data?.length > 0 && (
                     <Box component="h1" sx={{ textAlign: 'center' }}>No se encontraron blogs</Box>

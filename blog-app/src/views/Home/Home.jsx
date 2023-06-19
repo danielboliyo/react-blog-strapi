@@ -68,6 +68,9 @@ const Home = () => {
                 handleReset={handleReset}
             />
             <Container sx={{ mt: 2 }}>
+                {originalBlogs.length === 0 && (
+                    <Box component="h1" sx={{ textAlign: 'center' }}>No se encontraron blogs</Box>
+                )}
                 <Grid container spacing={2} columns={{ xs: 12, sm: 12, md: 12, lg: 12, xl: 12 }}>
                     {originalBlogs?.map((item) => (
                         <Grid key={item.id} item xs={12} sm={4} md={4} lg={3} xl={3}>

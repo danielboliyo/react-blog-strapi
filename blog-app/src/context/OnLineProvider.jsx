@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 export const OnLineContext = React.createContext();
 
 const OnLineProvider = ({ children }) => {
-    const [isOmline, setIsOnline] = useState(navigator.onLine);
+    const [isOnline, setIsOnline] = useState(navigator.onLine);
     useEffect(() => {
         const handleOnlineStatus = () => setIsOnline(navigator.onLine);
         window.addEventListener('online', handleOnlineStatus);
@@ -14,7 +14,7 @@ const OnLineProvider = ({ children }) => {
         };
       }, []);
     return (
-        <OnLineContext.Provider value={{ isOmline }}>
+        <OnLineContext.Provider value={{ isOnline }}>
             {children}
         </OnLineContext.Provider>
     );

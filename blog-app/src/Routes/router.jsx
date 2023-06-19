@@ -2,6 +2,7 @@ import { Suspense, lazy } from 'react';
 import TopBar from '../components/TopBar/TopBar';
 import Footer from '../components/Footer/Footer';
 import { Navigate, Outlet, createBrowserRouter } from 'react-router-dom';
+import Alerts from '../components/Alerts/Alerts';
 
 const Home = lazy(() => import('../views/Home/Home'));
 const CreateBlog = lazy(() => import('../views/CreateBlog/CreateBlog'));
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
         element: (
             <>
                 <TopBar />
+                <Alerts />
                 <Outlet />
                 <Footer />
             </>

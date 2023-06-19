@@ -50,7 +50,6 @@ export const createBlog = async (data) => {
   
 
 export const getBlogs = async () => {
-    console.log('isOnLine', isOnLine);
     const url = import.meta.env.VITE_STRAPPI_URL + '/api/travel-blogs?populate=*';
     const response = await axios.get(url, headers);
     return response;

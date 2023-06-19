@@ -57,16 +57,25 @@ Esto iniciará el servidor de Strapi y podrás acceder a la API en [http://local
 1. Crea un usuario administrador para el proyecto de Strapi:
     Puedes utilizar cualquier correo electrónico y contraseña para la cuenta, ya que será para el entorno local.:
 
-2. Navega a la carpeta `blog-app`:
-    Una vez que hayas creado tu cuenta, inicia sesión en el panel de administración de Strapi. Navega hasta la sección de configuración y genera un nuevo token de acceso. Este token se utilizará para autenticar las solicitudes API.
+2. Generar nuevo token de acceso:
+    Una vez que hayas creado tu cuenta, inicia sesión en el panel de administración de Strapi. Navega hasta la sección de configuración y genera un nuevo token de acceso. Este token se utilizará para autenticar las solicitudes API. Click en el boton Generate New API Token.
+
+    ![Alt text](image-1.png)
+    Agregar total acceso a la API en proyectos Travel-blog y Upload, esto para poder subir imagenes a la API. despues click en guardar.
+    ![Alt text](image-2.png)
+    ![Alt text](image-3.png)
 
 3. Sustituye el token en el archivo .env.development:
     Abre el archivo .env.development en la carpeta `blog-app` y sustituye el token de acceso generado en el paso anterior. El archivo .env.development debe tener el siguiente aspecto
     [VITE_STRAPPI_CLIENT_ID]
 
-4. Agregar permisos de acceso a la API:
-    En el panel de administración de Strapi, ve al apartado de roles y asegúrate de asignar los permisos adecuados a los roles para usuario autenticado en el proyecto [Travel-blog] correspondientes. Esto garantizará que los usuarios tengan los permisos necesarios para realizar acciones en la API de Strapi.
-    esto para usuario autenticado y publico, seleccionar todos los permisos.
+4. Agregar permisos en el apartado USERS & PERMISSIONS PLUGIN:
+    ![Alt text](image-4.png)
+    Agregar permisos de acceso a la API en ambos roles
+    ![Alt text](image-5.png)
+    en los mismos apartados, despues click en guardar.
+    ![Alt text](image-2.png)
+    ![Alt text](image-3.png)
 
 
 ## Recursos adicionales
@@ -76,5 +85,6 @@ Esto iniciará el servidor de Strapi y podrás acceder a la API en [http://local
 - [Documentación de Material-UI](https://mui.com/)
 - [Documentación de Axios](https://axios-http.com/)
 - [Documentación de Strapi](https://strapi.io/documentation/)
+- [Documentación de React Router](https://reactrouter.com/)
 
 

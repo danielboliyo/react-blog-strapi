@@ -1,0 +1,52 @@
+{
+  "kind": "collectionType",
+  "collectionName": "travel_blogs",
+  "info": {
+    "singularName": "travel-blog",
+    "pluralName": "travel-blogs",
+    "displayName": "travel-blog"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "release": {
+      "type": "datetime",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "miniature": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "image_content": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false,
+      "required": true
+    },
+    "published": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "author": {
+      "type": "string",
+      "required": true
+    },
+    "text_content": {
+      "type": "richtext",
+      "required": true
+    }
+  }
+}

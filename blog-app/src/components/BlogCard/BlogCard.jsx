@@ -15,7 +15,6 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import devdan from '../../assets/devdan.png';
 import { NavLink } from 'react-router-dom';
 
 const BlogCard = ({ attributes, id }) => {
@@ -25,7 +24,7 @@ const BlogCard = ({ attributes, id }) => {
             <CardHeader
                 sx={{ display: 'none' }}
                 avatar={
-                    <Avatar alt="Remy Sharp" src={devdan} />
+                    <Avatar alt="Remy Sharp" src="" />
                 }
                 action={
                     <IconButton aria-label="settings">

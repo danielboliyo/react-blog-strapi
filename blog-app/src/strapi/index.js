@@ -1,5 +1,22 @@
 import axios from 'axios';
 
+const isOnLine = navigator.onLine;
+
+/* 
+Configurar el almacenamiento local: Utiliza una biblioteca como localStorage o 
+IndexedDB para almacenar en caché los datos descargados previamente. 
+Puedes utilizar un identificador único, como el ID de la entrada, como clave para almacenar y 
+recuperar los datos. */
+/* useEffect(() => {
+    const handleOnlineStatus = () => setIsOnline(navigator.onLine);
+    window.addEventListener('online', handleOnlineStatus);
+    window.addEventListener('offline', handleOnlineStatus);
+    return () => {
+      window.removeEventListener('online', handleOnlineStatus);
+      window.removeEventListener('offline', handleOnlineStatus);
+    };
+  }, []); */
+
 const headers = {
     Authorization: `Bearer ${import.meta.env.VITE_STRAPPI_CLIENT_ID}`,
     "Content-Type": "application/json"
@@ -50,6 +67,7 @@ export const createBlog = async (data) => {
   
 
 export const getBlogs = async () => {
+    console.log('isOnLine', isOnLine);
     const url = import.meta.env.VITE_STRAPPI_URL + '/api/travel-blogs?populate=*';
     const response = await axios.get(url, headers);
     return response;

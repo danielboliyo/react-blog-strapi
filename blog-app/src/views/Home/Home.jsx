@@ -74,7 +74,7 @@ const Home = () => {
                 <Grid container spacing={2} columns={{ xs: 12, sm: 12, md: 12, lg: 12, xl: 12 }}>
                     {originalBlogs?.map((item) => (
                         <Grid key={item.id} item xs={12} sm={4} md={4} lg={3} xl={3}>
-                            <BlogCard id={item.id} attributes={item.attributes} />
+                            <BlogCard id={item.id} attributes={item?.attributes ? item?.attributes : {}} />
                         </Grid>
                     ))}
                 </Grid>

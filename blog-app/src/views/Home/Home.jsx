@@ -73,7 +73,9 @@ const Home = () => {
                     <Box component="h1" sx={{ textAlign: 'center' }}>No se encontraron blogs</Box>
                 )}
                 {originalBlogs.length === 0 && blogs.data?.length === 0 && (
-                    <Box component="h1" sx={{ textAlign: 'center' }}>No se encontraron blogs</Box>
+                    <Box component="h1" sx={{ textAlign: 'center' }}>
+                        Aun no has creado blogs, crea uno para que aparezca aquí
+                    </Box>
                 )}
                 <Grid container spacing={2} columns={{ xs: 12, sm: 12, md: 12, lg: 12, xl: 12 }}>
                     {originalBlogs?.map((item) => (

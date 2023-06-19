@@ -6,7 +6,12 @@ const Alerts = () => {
     const { isOnline } = useContext(OnLineContext);
     const [showAlert, setShowAlert] = useState(false);
     useEffect(() => {
-        if (isOnline) {
+        if (!isOnline) {
+            setShowAlert(true);
+        } else {
+            setShowAlert(false);
+        }
+        /* if (isOnline) {
             setShowAlert(true);
             const timer = setTimeout(() => {
                 setShowAlert(false);
@@ -15,15 +20,15 @@ const Alerts = () => {
             return () => {
                 clearTimeout(timer);
             };
-        }
+        } */
     }, [isOnline]);
     return (
         <Container maxWidth="lg">
-            {showAlert && isOnline && (
+            {/* {showAlert && isOnline && (
                 <Alert severity="success" onClose={() => setShowAlert(false)}>
                     You are online!
                 </Alert>
-            )}
+            )} */}
             {showAlert && !isOnline && (
                 <Alert severity="error">You are offline!</Alert>
             )}

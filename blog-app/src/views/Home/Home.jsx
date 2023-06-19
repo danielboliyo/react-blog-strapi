@@ -1,14 +1,37 @@
-import React, { useContext, useState } from 'react';
+import React, { useEffect, useReducer, useState } from 'react';
 import BlogSearch from '../../components/BlogSearch/BlogSearch';
 import { Box, Container, Grid } from '@mui/material';
 import BlogCard from '../../components/BlogCard/BlogCard';
 import Loader from '../../components/Loader/Loader';
-import { BlogsContext } from '../../context/BlogsContext';
+import { getBlogs } from '../../strapi';
+import {
+    fetchReducer,
+    initialState,
+    GET_DATA_TYPE_LOADING,
+    GET_DATA_TYPE_SUCCESS,
+    GET_DATA_TYPE_FAILURE
+} from '../../reducers/fetchReducer';
 
 const Home = () => {
-    const { blogs } = useContext(BlogsContext);
     const [searchText, setSearchText] = useState('');
-    const [originalBlogs, setOriginalBlogs] = useState(blogs.data);
+    const [originalBlogs, setOriginalBlogs] = useState([]);
+    const [blogs, blogsDispatch] = useReducer(fetchReducer, initialState);
+    useEffect(() => {
+        blogsDispatch({ type: GET_DATA_TYPE_LOADING, payload: true });
+        const getAllBlogs = async () => {
+            try {
+                const blogs = await getBlogs();
+                console.log(blogs.data?.data);
+                blogsDispatch({ type: GET_DATA_TYPE_SUCCESS, payload: blogs.data?.data });
+                setOriginalBlogs(blogs.data?.data);
+            } catch (error) {
+                blogsDispatch({ type: GET_DATA_TYPE_LOADING, payload: false });
+                blogsDispatch({ type: GET_DATA_TYPE_FAILURE, payload: 'Error' });
+                console.error(error);
+            }
+        };
+        getAllBlogs();
+    }, []);
     const handleSearch = () => {
         //if (searchText == '') return;
         if (searchText == '') {

@@ -30,7 +30,9 @@ export const ContainerStyled = styled(Container)`
     margin-top: 50px;
     display: flex;
     justify-content: space-between;
+    margin-bottom: 2rem;
     @media (max-width: 600px) {
         flex-direction: column;
+        margin-bottom: 8rem;
     }
 `;

@@ -1,6 +1,6 @@
 import React, { useEffect, useReducer, useState } from 'react';
 import BlogSearch from '../../components/BlogSearch/BlogSearch';
-import { Box, Container, Grid } from '@mui/material';
+import { Box, Container, Grid, Typography } from '@mui/material';
 import BlogCard from '../../components/BlogCard/BlogCard';
 import Loader from '../../components/Loader/Loader';
 import { getBlogs } from '../../strapi';
@@ -57,9 +57,9 @@ const Home = () => {
         setSearchText(''); // Reiniciar el campo de búsqueda
         setOriginalBlogs(blogs.data); // Restaurar los blogs originales
     };
-    if (!blogs.data) return (<Loader open={blogs.loading} onClose={() => {}} />);
     return (
         <div>
+            <Loader open={blogs.loading} onClose={() => {}} />
             <Box component="h1" sx={{ textAlign: 'center' }}>Explore</Box>
             <BlogSearch
                 setSearchText={setSearchText}
@@ -67,8 +67,12 @@ const Home = () => {
                 searchText={searchText}
                 handleReset={handleReset}
             />
+            {blogs.error && <Typography variant="h2" sx={{ textAlign: 'center' }}>{blogs.error}</Typography>}
             <Container sx={{ mt: 2 }}>
-                {originalBlogs.length === 0 && (
+                {originalBlogs.length === 0 && blogs.data?.length > 0 && (
+                    <Box component="h1" sx={{ textAlign: 'center' }}>No se encontraron blogs</Box>
+                )}
+                {originalBlogs.length === 0 && blogs.data?.length === 0 && (
                     <Box component="h1" sx={{ textAlign: 'center' }}>No se encontraron blogs</Box>
                 )}
                 <Grid container spacing={2} columns={{ xs: 12, sm: 12, md: 12, lg: 12, xl: 12 }}>
